@@ -5,6 +5,7 @@ import java.util.List;
 import com.organization.mvcproject.model.GameImpl;
 
 public interface GameService {
+	
 
 	List<GameImpl> retrieveAllGames();
 	

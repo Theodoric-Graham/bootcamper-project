@@ -17,7 +17,7 @@ angular.module('MGL_Task1_app').controller('GameController',
 			}
 
 			self.addGame = function(){
-				return MGL_Task1_Service.createGame(self.game).then( function() {
+				return GameService.createGame(self.game).then( function() {
 				self.fetchAllGames();
 				});
 			}
