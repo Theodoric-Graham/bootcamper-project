@@ -22,10 +22,10 @@ angular.module('MGL_Task1_app').controller('GameController',
 				});
 			}
 			
-			self.deleteGame = function() {
-				return GameService.deleteGame(self.game.game_id).then( function () {
-					self.deleteGame();
-				});
+			self.deleteGame = function(gameToDelete){
+				return GameService.deleteGame(gameToDelete.id).then( function() {
+				 self.fetchAllGames(); 
+				});	
 			}
 
 			self.fetchAllGames();

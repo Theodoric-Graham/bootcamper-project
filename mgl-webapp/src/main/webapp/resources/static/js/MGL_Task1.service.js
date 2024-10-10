@@ -6,7 +6,8 @@ angular.module('MGL_Task1_app').factory('GameService', ['$http', function($http)
 
 		var factory = {
 			fetchAllGames : fetchAllGames,
-			createGame : createGame
+			createGame : createGame,
+			deleteGame: deleteGame
 		};
 
 		return factory;
@@ -25,11 +26,16 @@ angular.module('MGL_Task1_app').factory('GameService', ['$http', function($http)
 			);
 		}
 		
-		function deleteGame(id) {
-					return $http.post(REST_SERVICE_URI + 'deleteGame', id).then(function(response) {
-							return response.data;
-						}
-					);
+		//  localhost:8081/game/1  DELETE
+		function deleteGame(gameId) {
+			return $http.delete(REST_SERVICE_URI + gameId).then( function( response ){
+				if(response.data){
+					$log.info("Successfully deleted game with id: " + gameId);  
+				} else {
+					$log.debug("No Game Deleted with id: " + gameId);
 				}
+				return response.data; 
+			});
+		}
 
 }]);
